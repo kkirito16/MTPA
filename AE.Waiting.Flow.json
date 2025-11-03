@@ -1,0 +1,492 @@
+[
+    {
+        "id": "9cc8f705.c53c18",
+        "type": "tab",
+        "label": "AE Waiting",
+        "disabled": false,
+        "info": "",
+        "wires": []
+    },
+    {
+        "id": "ca7c92cf.72d5e",
+        "type": "mongodb3",
+        "z": "",
+        "uri": "mongodb://Mymongo:27017",
+        "name": "AE",
+        "options": "",
+        "parallelism": "-1",
+        "wires": []
+    },
+    {
+        "id": "fa64d73d.2132b8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "AE Waiting",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false,
+        "wires": []
+    },
+    {
+        "id": "b2327f9e.1dc69",
+        "type": "ui_group",
+        "z": "",
+        "name": "Waiting Time",
+        "tab": "fa64d73d.2132b8",
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "wires": []
+    },
+    {
+        "id": "b1e8ba6f.cb13d8",
+        "type": "inject",
+        "z": "9cc8f705.c53c18",
+        "name": "",
+        "topic": "Init",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "58e5aa09.143cc4"
+            ]
+        ]
+    },
+    {
+        "id": "58e5aa09.143cc4",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Retrieve Last Batch Query",
+        "func": "msg.payload = [\n    {\n        \"$query\": {}\n    },\n    {\n        \"sort\": {\n            \"_id\": -1\n        }\n    }\n];\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "dcbe9da4.7a96f"
+            ]
+        ]
+    },
+    {
+        "id": "dcbe9da4.7a96f",
+        "type": "mongodb3 in",
+        "z": "9cc8f705.c53c18",
+        "service": "_ext_",
+        "configNode": "ca7c92cf.72d5e",
+        "name": "AE Retrieve Last Batch",
+        "collection": "AE Waiting",
+        "operation": "findOne",
+        "x": 590,
+        "y": 60,
+        "wires": [
+            [
+                "4a138489.c76dbc"
+            ]
+        ]
+    },
+    {
+        "id": "4a138489.c76dbc",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Cache Last Update",
+        "func": "if (msg.payload && msg.payload.updateTimeISO) {\n    flow.set('aeLastUpdate', msg.payload.updateTimeISO);\n} else if (msg.payload && msg.payload.retrievedAt) {\n    flow.set('aeLastUpdate', msg.payload.retrievedAt);\n} else {\n    flow.set('aeLastUpdate', \"\");\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1093e5a.76b2c",
+        "type": "inject",
+        "z": "9cc8f705.c53c18",
+        "name": "",
+        "topic": "Timer",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "97dd97b2.6a2e68"
+            ]
+        ]
+    },
+    {
+        "id": "97dd97b2.6a2e68",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Prepare AE Request",
+        "func": "msg.retrievalStarted = new Date().toISOString();\nmsg.headers = {\n    'Accept': 'application/json'\n};\nmsg.payload = {};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "d5da00b1.af83a"
+            ]
+        ]
+    },
+    {
+        "id": "d5da00b1.af83a",
+        "type": "http request",
+        "z": "9cc8f705.c53c18",
+        "name": "Fetch HA AE Data",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://www.ha.org.hk/aedwt/data/aedWtData2.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 950,
+        "y": 180,
+        "wires": [
+            [
+                "f43db60f.94a378"
+            ]
+        ]
+    },
+    {
+        "id": "f43db60f.94a378",
+        "type": "json",
+        "z": "9cc8f705.c53c18",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1120,
+        "y": 180,
+        "wires": [
+            [
+                "6aa3b30f.d5666c"
+            ]
+        ]
+    },
+    {
+        "id": "6aa3b30f.d5666c",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Parse AE Response",
+        "func": "var data = msg.payload;\nvar nowISO = new Date().toISOString();\n\nif (!data || data.success !== 'Y' || !data.result || !Array.isArray(data.result.hospData)) {\n    node.error('Invalid AE waiting time payload', msg);\n    return null;\n}\n\nvar hospitals = [];\n\nfunction parseWait(value) {\n    if (value === null || value === undefined) {\n        return null;\n    }\n    var str = String(value).trim();\n    if (!str || str === '-' || str === '--') {\n        return null;\n    }\n    var lessMatch = str.match(/少于?\\s*(\\d+)/);\n    if (lessMatch) {\n        return Number(lessMatch[1]);\n    }\n    var minuteMatch = str.match(/(\\d+(?:\\.\\d+)?)\\s*分(?:钟|鐘)?/);\n    if (minuteMatch) {\n        return Number(minuteMatch[1]);\n    }\n    var hourMatch = str.match(/(\\d+(?:\\.\\d+)?)\\s*小(?:时|時)/);\n    if (hourMatch) {\n        return Number(hourMatch[1]) * 60;\n    }\n    var numMatch = str.match(/(\\d+(?:\\.\\d+)?)/);\n    if (numMatch) {\n        return Number(numMatch[1]);\n    }\n    return null;\n}\n\nfunction parseHospTime(value) {\n    if (!value) {\n        return '';\n    }\n    var str = String(value).trim();\n    if (!str) {\n        return '';\n    }\n    var isoCandidate = new Date(str);\n    if (!isNaN(isoCandidate.getTime())) {\n        return isoCandidate.toISOString();\n    }\n    var cleaned = str;\n    if (/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?$/.test(str)) {\n        cleaned = str + '+08:00';\n    }\n    var parsed = new Date(cleaned);\n    if (!isNaN(parsed.getTime())) {\n        return parsed.toISOString();\n    }\n    return '';\n}\n\nfunction normalizeUpdate(raw) {\n    if (!raw) {\n        return '';\n    }\n    var str = String(raw).trim();\n    var isoCandidate = new Date(str);\n    if (!isNaN(isoCandidate.getTime())) {\n        return isoCandidate.toISOString();\n    }\n    var period = '';\n    if (str.indexOf('上午') >= 0 || str.indexOf('凌晨') >= 0) {\n        period = 'AM';\n    } else if (str.indexOf('下午') >= 0 || str.indexOf('晚上') >= 0 || str.indexOf('中午') >= 0) {\n        period = 'PM';\n    }\n    str = str.replace(/上午|下午|晚上|凌晨|中午|午夜/g, '');\n    str = str.replace(/年/g, '-').replace(/月/g, '-').replace(/日/g, '');\n    str = str.replace(/时|時/g, ':').replace(/分/g, '');\n    str = str.replace(/[：]/g, ':');\n    str = str.replace(/\\s+/g, ' ').trim();\n    if (period) {\n        str = str + ' ' + period;\n    }\n    var parsed = new Date(str + ' GMT+0800');\n    if (!isNaN(parsed.getTime())) {\n        return parsed.toISOString();\n    }\n    return '';\n}\n\n(data.result.hospData || []).forEach(function (h) {\n    if (!h) {\n        return;\n    }\n    var updateRaw = h.hospTimeGb || h.hospTimeB5 || h.hospTimeEn || h.hospTime || '';\n    var updateISO = parseHospTime(h.hospTime) || parseHospTime(h.hospTimeEn) || parseHospTime(h.hospTimeB5) || parseHospTime(h.hospTimeGb) || normalizeUpdate(updateRaw) || nowISO;\n\n    var coords = { latitude: null, longitude: null };\n    if (h.hospCoord) {\n        var parts = String(h.hospCoord).split(',');\n        if (parts.length === 2) {\n            var lat = parseFloat(parts[0]);\n            var lon = parseFloat(parts[1]);\n            if (!isNaN(lat)) {\n                coords.latitude = lat;\n            }\n            if (!isNaN(lon)) {\n                coords.longitude = lon;\n            }\n        }\n    }\n\n    var hospital = {\n        hospName: h.hospNameGb || h.hospNameEn || h.hospNameB5 || '',\n        hospCode: h.hospCode || '',\n        updateTimeRaw: updateRaw,\n        updateTimeISO: updateISO,\n        retrievedAt: nowISO,\n        metricsRaw: {\n            t1wt: h.t1wtGb || h.t1wtEn || '',\n            manageT1case: h.manageT1caseGb || h.manageT1caseEn || h.manageT1case || '',\n            t2wt: h.t2wtGb || h.t2wtEn || '',\n            manageT2case: h.manageT2caseGb || h.manageT2caseEn || h.manageT2case || '',\n            t3p50: h.t3p50Gb || h.t3p50En || '',\n            t3p95: h.t3p95Gb || h.t3p95En || '',\n            t45p50: h.t45p50Gb || h.t45p50En || '',\n            t45p95: h.t45p95Gb || h.t45p95En || ''\n        },\n        metricsMinutes: {\n            t1wt: parseWait(h.t1wtGb || h.t1wtEn),\n            t2wt: parseWait(h.t2wtGb || h.t2wtEn),\n            t3p50: parseWait(h.t3p50Gb || h.t3p50En),\n            t3p95: parseWait(h.t3p95Gb || h.t3p95En),\n            t45p50: parseWait(h.t45p50Gb || h.t45p50En),\n            t45p95: parseWait(h.t45p95Gb || h.t45p95En)\n        },\n        counts: {\n            total: typeof h.count === 'number' ? h.count : null,\n            t12: typeof h.t12Count === 'number' ? h.t12Count : null\n        },\n        location: coords\n    };\n\n    hospitals.push(hospital);\n});\n\nmsg.payload = hospitals;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1310,
+        "y": 180,
+        "wires": [
+            [
+                "1ea17dc1.aa72f2"
+            ]
+        ]
+    },
+    {
+        "id": "1ea17dc1.aa72f2",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Build Batch Document",
+        "func": "var hospitals = Array.isArray(msg.payload) ? msg.payload : [];\nvar requestedAt = msg.retrievalStarted || new Date().toISOString();\n\nvar times = hospitals.map(function (item) {\n    return item.updateTimeISO || item.retrievedAt;\n}).filter(function (value) {\n    return value;\n});\n\nvar batchUpdate = times.length ? times.sort()[times.length - 1] : requestedAt;\n\nmsg.batchUpdateTime = batchUpdate;\nmsg.payload = {\n    updateTimeISO: batchUpdate,\n    retrievedAt: new Date().toISOString(),\n    hospitals: hospitals\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1700,
+        "y": 180,
+        "wires": [
+            [
+                "a832402e.4dbc7"
+            ]
+        ]
+    },
+    {
+        "id": "a832402e.4dbc7",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Need Update?",
+        "func": "var last = flow.get('aeLastUpdate') || '';\nvar current = msg.batchUpdateTime || (msg.payload && msg.payload.updateTimeISO) || '';\n\nif (last && current && current <= last) {\n    msg.needUpdate = false;\n} else {\n    msg.needUpdate = true;\n}\n\nmsg.updateMarker = current || msg.payload.retrievedAt || new Date().toISOString();\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1890,
+        "y": 180,
+        "wires": [
+            [
+                "b4e6808c.e15588"
+            ]
+        ]
+    },
+    {
+        "id": "b4e6808c.e15588",
+        "type": "switch",
+        "z": "9cc8f705.c53c18",
+        "name": "Need Update",
+        "property": "needUpdate",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "jsonata"
+            },
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2090,
+        "y": 180,
+        "wires": [
+            [
+                "3ad3d39b.f1a1cc"
+            ],
+            [
+                "4d76ef38.f346d8"
+            ]
+        ]
+    },
+    {
+        "id": "3ad3d39b.f1a1cc",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "No Update",
+        "func": "msg.payload = 'No Update';\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 2290,
+        "y": 140,
+        "wires": [
+            [
+                "1fcb7628.3555a2"
+            ]
+        ]
+    },
+    {
+        "id": "1fcb7628.3555a2",
+        "type": "debug",
+        "z": "9cc8f705.c53c18",
+        "name": "AE No Update",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2470,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4d76ef38.f346d8",
+        "type": "mongodb3 in",
+        "z": "9cc8f705.c53c18",
+        "service": "_ext_",
+        "configNode": "ca7c92cf.72d5e",
+        "name": "AE Insert Batch",
+        "collection": "AE Waiting",
+        "operation": "insert",
+        "x": 2290,
+        "y": 220,
+        "wires": [
+            [
+                "1e33e542.6d76ab"
+            ]
+        ]
+    },
+    {
+        "id": "1e33e542.6d76ab",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Record Last Update",
+        "func": "if (msg.updateMarker) {\n    flow.set('aeLastUpdate', msg.updateMarker);\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 2490,
+        "y": 220,
+        "wires": [
+            [
+                "a02f6d7e.c4c31"
+            ]
+        ]
+    },
+    {
+        "id": "a02f6d7e.c4c31",
+        "type": "debug",
+        "z": "9cc8f705.c53c18",
+        "name": "AE Inserted",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2670,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a0fa6b5c.9ba7b8",
+        "type": "inject",
+        "z": "9cc8f705.c53c18",
+        "name": "",
+        "topic": "Chart Timer",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "13b63a19.bb0a4e"
+            ]
+        ]
+    },
+    {
+        "id": "13b63a19.bb0a4e",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Construct Date Range",
+        "func": "var date = new Date();\nvar seconds = date.getSeconds();\nvar minMilliSeconds = 60 * 1000;\nvar hourMilliSeconds = 60 * minMilliSeconds;\nvar dayMilliSeconds = 24 * hourMilliSeconds;\nvar duration = 1 * dayMilliSeconds;\n\nvar et = date;\net.setSeconds(Math.floor(seconds / 10) * 10);\nvar st = new Date(et.getTime() - duration);\n\nmsg.startTime = st;\nmsg.endTime = et;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "65f3a0e7.6c30b"
+            ]
+        ]
+    },
+    {
+        "id": "65f3a0e7.6c30b",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Construct Query",
+        "func": "msg.payload = {};\nmsg.sort = { retrievedAt: -1 };\nmsg.limit = 288;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 360,
+        "wires": [
+            [
+                "2deccb6b.efeef4"
+            ]
+        ]
+    },
+    {
+        "id": "2deccb6b.efeef4",
+        "type": "mongodb3 in",
+        "z": "9cc8f705.c53c18",
+        "service": "_ext_",
+        "configNode": "ca7c92cf.72d5e",
+        "name": "AE Retrieve Range",
+        "collection": "AE Waiting",
+        "operation": "find.toArray",
+        "x": 770,
+        "y": 360,
+        "wires": [
+            [
+                "2be52141.9d3ef6"
+            ]
+        ]
+    },
+    {
+        "id": "2be52141.9d3ef6",
+        "type": "function",
+        "z": "9cc8f705.c53c18",
+        "name": "Format Chart Data",
+        "func": "var records = Array.isArray(msg.payload) ? msg.payload : [];\nif (records.length === 0) {\n    msg.payload = [{ series: [], data: [], labels: '' }];\n    return msg;\n}\n\nvar sortedRecords = records.slice();\nif (msg.sort && msg.sort.retrievedAt === -1) {\n    sortedRecords.reverse();\n}\n\nvar seriesMap = {};\nvar driftThreshold = 6 * 60 * 60 * 1000;\n\nsortedRecords.forEach(function (doc) {\n    var updateTime = doc.updateTimeISO ? new Date(doc.updateTimeISO) : null;\n    var retrievedTime = doc.retrievedAt ? new Date(doc.retrievedAt) : null;\n    var recordTime = updateTime || retrievedTime || new Date();\n\n    if (updateTime && retrievedTime) {\n        var drift = Math.abs(updateTime.getTime() - retrievedTime.getTime());\n        if (drift > driftThreshold) {\n            recordTime = retrievedTime;\n        }\n    }\n\n    if (!doc.hospitals) {\n        return;\n    }\n\n    doc.hospitals.forEach(function (hospital) {\n        if (!hospital || !hospital.hospName) {\n            return;\n        }\n        var minutes = hospital.metricsMinutes && hospital.metricsMinutes.t45p50;\n        if (minutes === null || minutes === undefined) {\n            return;\n        }\n        if (!seriesMap[hospital.hospName]) {\n            seriesMap[hospital.hospName] = [];\n        }\n        seriesMap[hospital.hospName].push({\n            x: recordTime,\n            y: minutes\n        });\n    });\n});\n\nvar seriesNames = Object.keys(seriesMap);\nvar seriesData = seriesNames.map(function (name) {\n    return seriesMap[name].sort(function (a, b) {\n        return new Date(a.x).getTime() - new Date(b.x).getTime();\n    });\n});\n\nvar chartData = [{\n    series: seriesNames,\n    data: seriesData,\n    labels: ''\n}];\n\nmsg.payload = chartData;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 980,
+        "y": 360,
+        "wires": [
+            [
+                "097cf16b.436a7"
+            ]
+        ]
+    },
+    {
+        "id": "097cf16b.436a7",
+        "type": "ui_chart",
+        "z": "9cc8f705.c53c18",
+        "name": "",
+        "group": "b2327f9e.1dc69",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "t45p50 等候时间 (分钟)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "48",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#d62728",
+            "#9467bd",
+            "#8c564b",
+            "#e377c2",
+            "#7f7f7f",
+            "#bcbd22",
+            "#17becf"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 1180,
+        "y": 360,
+        "wires": [
+            [
+                "cf7bfdfd.b6362"
+            ]
+        ]
+    },
+    {
+        "id": "cf7bfdfd.b6362",
+        "type": "debug",
+        "z": "9cc8f705.c53c18",
+        "name": "Chart Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1370,
+        "y": 360,
+        "wires": []
+    }
+]
