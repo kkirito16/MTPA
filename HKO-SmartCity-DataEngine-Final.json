@@ -1,0 +1,1440 @@
+[
+    {
+        "id": "8cf15ceddc68fcba",
+        "type": "tab",
+        "label": "HKO Temperature",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "54dcfb7b228095b5",
+        "type": "tab",
+        "label": "Data Ingestion",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d03b834723d9d70f",
+        "type": "tab",
+        "label": "Analytics Engine",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ecc26120.5c01a8",
+        "type": "mongodb3",
+        "uri": "mongodb://admin:666712@Mymongo:27017/?authSource=admin",
+        "name": "HKO",
+        "options": "",
+        "parallelism": "-1"
+    },
+    {
+        "id": "e9f24978.c8dae8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "HKSTP",
+                "default": "#4B7930",
+                "baseColor": "#371a95",
+                "baseFont": "Arial,Arial,Helvetica,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": true
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "6f24792a.43aac",
+        "type": "ui_tab",
+        "name": "Historical Analysis",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "4921adae.55bbbc",
+        "type": "ui_group",
+        "name": "Micro-Climate Trends",
+        "tab": "6f24792a.43aac",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0f3f380ccedbc016",
+        "type": "ui_tab",
+        "name": "Real-time Overview",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7e4719fe5df18646",
+        "type": "ui_group",
+        "name": "Temperature-AQHI Correlation",
+        "tab": "0f3f380ccedbc016",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d6993f84a235e176",
+        "type": "ui_group",
+        "name": "Real-time Environment",
+        "tab": "0f3f380ccedbc016",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "10f3c747ac8315e4",
+        "type": "ui_group",
+        "name": "Traffic Flow Trends",
+        "tab": "6f24792a.43aac",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "446931bd770fd7d2",
+        "type": "ui_group",
+        "name": "Cross-Domain Analysis",
+        "tab": "6f24792a.43aac",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8bf96ae64d99671b",
+        "type": "ui_group",
+        "name": "Real-time Mobility",
+        "tab": "0f3f380ccedbc016",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "809640aa4dc59114",
+        "type": "ui_group",
+        "name": "Real-time Gauge",
+        "tab": "0f3f380ccedbc016",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2b0392f14cc53dc5",
+        "type": "mongodb3 in",
+        "z": "8cf15ceddc68fcba",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "",
+        "collection": "Weather Report",
+        "operation": "insert",
+        "x": 509,
+        "y": 269,
+        "wires": [
+            [
+                "8789365611dc4a2f"
+            ]
+        ]
+    },
+    {
+        "id": "421dbdbe10cf9d5e",
+        "type": "mongodb3 in",
+        "z": "8cf15ceddc68fcba",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "HKO Retrieve Last Record",
+        "collection": "Weather Report",
+        "operation": "findOne",
+        "x": 452,
+        "y": 54,
+        "wires": [
+            [
+                "1d670f121acbff77"
+            ]
+        ]
+    },
+    {
+        "id": "38e0e25bd0a2f5e3",
+        "type": "inject",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "Timer",
+        "payload": "",
+        "payloadType": "date",
+        "x": 166,
+        "y": 54,
+        "wires": [
+            [
+                "2e15d074640e8d8a"
+            ]
+        ]
+    },
+    {
+        "id": "2e15d074640e8d8a",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "Retrieve Last Record Query",
+        "func": "msg.payload = [\n    {\n        \"$query\": {}\n    },\n    {\n        \"sort\": {\n            \"_id\": -1\n        }\n    }\n]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 121,
+        "wires": [
+            [
+                "421dbdbe10cf9d5e"
+            ]
+        ]
+    },
+    {
+        "id": "1d670f121acbff77",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "Get Last updateTime",
+        "func": "if(msg.payload.hasOwnProperty('updateTime')) {\n    flow.set('lastUpdateTime', msg.payload.updateTime);\n} else {\n    flow.set('lastUpdateTime', \"\");\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 608,
+        "y": 121,
+        "wires": [
+            [
+                "d74cd260af2f0fd0"
+            ]
+        ]
+    },
+    {
+        "id": "d74cd260af2f0fd0",
+        "type": "http request",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=rhrread&lang=en",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 261,
+        "y": 177,
+        "wires": [
+            [
+                "752410706f7fc72a"
+            ]
+        ]
+    },
+    {
+        "id": "752410706f7fc72a",
+        "type": "json",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 177,
+        "wires": [
+            [
+                "3bf13318e1386028"
+            ]
+        ]
+    },
+    {
+        "id": "3bf13318e1386028",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "New Record Available",
+        "func": "lastUpdateTime = flow.get('lastUpdateTime');\n\nvar updateTimeTemp = new Date(msg.payload.updateTime)\nvar updateTime = updateTimeTemp.toISOString() ;\n\nif(updateTime > lastUpdateTime) {\n    msg.needUpdate = true ;\n    msg.payload.updateTime = updateTime ;\n} else {\n    msg.needUpdate = false ;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 605,
+        "y": 177,
+        "wires": [
+            [
+                "33e207eb48965c86"
+            ]
+        ]
+    },
+    {
+        "id": "33e207eb48965c86",
+        "type": "switch",
+        "z": "8cf15ceddc68fcba",
+        "name": "Need Update",
+        "property": "needUpdate",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "jsonata"
+            },
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 234,
+        "wires": [
+            [
+                "a24dba9050731ca7"
+            ],
+            [
+                "2b0392f14cc53dc5"
+            ]
+        ]
+    },
+    {
+        "id": "a24dba9050731ca7",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "No Update",
+        "func": "msg.payload = \"No Update\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 461,
+        "y": 227,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8789365611dc4a2f",
+        "type": "debug",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 733,
+        "y": 269,
+        "wires": []
+    },
+    {
+        "id": "5eddc6d989b49fe7",
+        "type": "mongodb3 in",
+        "z": "8cf15ceddc68fcba",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "HKO Retrieve Records",
+        "collection": "Weather Report",
+        "operation": "find.toArray",
+        "x": 545,
+        "y": 415,
+        "wires": [
+            [
+                "22effd98fb9d8509"
+            ]
+        ]
+    },
+    {
+        "id": "896b38028b962b8e",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "Construct Date Range",
+        "func": "var date = new Date();\nvar day = date.getDate() ;\nvar month = date.getMonth();\nvar year = date.getFullYear();\nvar hour = date.getHours();\nvar minutes = date.getMinutes();\nvar seconds = date.getSeconds();\nvar st, et ;\nvar minMilliSeconds = 60 * 1000;\nvar hourMilliSeconds = 60 * minMilliSeconds;\nvar dayMilliSeconds = 24 * hourMilliSeconds;\nvar duration = 1 * dayMilliSeconds;\n\net = date ;\net.setSeconds(seconds/10*10);\nst = new Date() ;\nst.setTime(et.getTime() - duration);\n\nmsg.startTime = st ;\nmsg.endTime = et ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 261,
+        "y": 417,
+        "wires": [
+            [
+                "53d07b7eb7963cf9"
+            ]
+        ]
+    },
+    {
+        "id": "53d07b7eb7963cf9",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "Construct Queries",
+        "func": "var st = msg.startTime;\nvar et = msg.endTime;\n\nvar stts = st.getTime();\nvar etts = et.getTime();\n\nvar ststr=st.toISOString();\nvar etstr=et.toISOString();\n\nvar query = { 'updateTime': { $gt: ststr, $lt: etstr} };\n\nmsg.payload = query;\nmsg.ststr = ststr ;\nmsg.etstr = etstr ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 384,
+        "y": 353,
+        "wires": [
+            [
+                "5eddc6d989b49fe7"
+            ]
+        ]
+    },
+    {
+        "id": "22effd98fb9d8509",
+        "type": "function",
+        "z": "8cf15ceddc68fcba",
+        "name": "Format Chart Data",
+        "func": "var weatherDataArray = Object.values(msg.payload) ;\n\nvar dataCount = weatherDataArray.length ;\n\nvar i, j ;\n\nvar placeDataArray = {} ;\n\n\nfor(j = 0; j < dataCount; j++) {\n    for(i = 0; i < weatherDataArray[j].temperature.data.length; i++) {\n        if(!placeDataArray.hasOwnProperty(weatherDataArray[j].temperature.data[i].place)) {\n            placeDataArray[weatherDataArray[j].temperature.data[i].place] = [] ;\n        }\n        placeDataArray[weatherDataArray[j].temperature.data[i].place].push({\"x\": new Date(weatherDataArray[j].temperature.recordTime), \"y\": weatherDataArray[j].temperature.data[i].value});\n    }\n}\n\nvar chartData = [{\"series\": Object.keys(placeDataArray), \"data\": Object.values(placeDataArray), \"labels\": \"\"}];\n\nmsg.payload = chartData ;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 258.5,
+        "y": 482,
+        "wires": [
+            [
+                "e5dbb20077815788"
+            ]
+        ]
+    },
+    {
+        "id": "e5dbb20077815788",
+        "type": "ui_chart",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "group": "4921adae.55bbbc",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "label": "Station Temperature Trend (°C)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "24",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#e74c3c",
+            "#ff7043",
+            "#ffa726",
+            "#ffca28",
+            "#f39c12",
+            "#d35400",
+            "#c0392b",
+            "#e67e22",
+            "#f4a261"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 534,
+        "y": 483,
+        "wires": [
+            [
+                "fe7f869b9a3f59bf"
+            ]
+        ]
+    },
+    {
+        "id": "6b10723f82fe0036",
+        "type": "inject",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "Timer",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 356,
+        "wires": [
+            [
+                "896b38028b962b8e"
+            ]
+        ]
+    },
+    {
+        "id": "fe7f869b9a3f59bf",
+        "type": "debug",
+        "z": "8cf15ceddc68fcba",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 584,
+        "y": 539,
+        "wires": []
+    },
+    {
+        "id": "3b48c9a5519baa84",
+        "type": "inject",
+        "z": "54dcfb7b228095b5",
+        "name": "Trigger AQHI",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "018414b5432a07c8"
+            ]
+        ]
+    },
+    {
+        "id": "018414b5432a07c8",
+        "type": "http request",
+        "z": "54dcfb7b228095b5",
+        "name": "Get AQHI JSON",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://dashboard.data.gov.hk/api/aqhi-individual?format=json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "8e442d157dbc36aa"
+            ]
+        ]
+    },
+    {
+        "id": "8e442d157dbc36aa",
+        "type": "function",
+        "z": "54dcfb7b228095b5",
+        "name": "Extract AQHI Data",
+        "func": "// 1. 获取 API 返回的所有监测站数据数组\nvar allStations = msg.payload;\n\n// 2. 设定目标站: \"Central/Western\"\n// 注意: 官方 API 有时会包含空格，如果 \"Central/Western\" 找不到，代码会自动尝试 \"Central/Western Station\" 等模糊匹配\nvar targetStationName = \"Central/Western\"; \n\nvar extractedData = {};\n\n// 3. 遍历数组查找目标\nif (Array.isArray(allStations)) {\n    for (var i = 0; i < allStations.length; i++) {\n        var record = allStations[i];\n        // 关键修正: 字段名从 StationName 改为 station (小写)\n        // 使用 includes 进行模糊匹配，防止 \"Central/Western\" 和 \"Central / Western\" (带空格) 的差异导致失败\n        if (record.station && record.station.includes(\"Central/Western\")) {\n            extractedData = {\n                station: record.station, // 使用 API 返回的原始站名\n                // 强制转为浮点数 (aqhi 字段通常是字符串)\n                aqhi: parseFloat(record.aqhi), \n                // 保留健康风险等级\n                health_risk: record.health_risk,\n                // 注入时间戳\n                timestamp: new Date() \n            };\n            break; // 找到后立即停止\n        }\n    }\n}\n\n// 4. 验证并输出\nif (extractedData.station) {\n    msg.payload = extractedData;\n    return msg; \n} else {\n    // 调试辅助: 如果找不到，把所有站名打印出来，方便你看看到底有哪些站\n    var availableStations = allStations.map(function(s) { return s.station; });\n    node.warn(\"Target not found! Available stations: \" + JSON.stringify(availableStations));\n    return null; \n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "e312e65f87e87268",
+                "5de1611082578d06"
+            ]
+        ]
+    },
+    {
+        "id": "e312e65f87e87268",
+        "type": "mongodb3 in",
+        "z": "54dcfb7b228095b5",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "Insert AQHI",
+        "collection": "aqhi_data",
+        "operation": "insert",
+        "x": 630,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5de1611082578d06",
+        "type": "function",
+        "z": "54dcfb7b228095b5",
+        "name": "AQHI Gauge Value",
+        "func": "if (msg.payload && msg.payload.aqhi !== undefined) {\n    msg.payload = Number(msg.payload.aqhi);\n}\nmsg.topic = \"AQHI\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 120,
+        "wires": [
+            [
+                "723a29151c69af0f"
+            ]
+        ]
+    },
+    {
+        "id": "723a29151c69af0f",
+        "type": "ui_gauge",
+        "z": "54dcfb7b228095b5",
+        "name": "AQHI Gauge",
+        "group": "809640aa4dc59114",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "AQHI (Central/Western)",
+        "label": "Index",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#2ecc71",
+            "#f1c40f",
+            "#e74c3c"
+        ],
+        "seg1": "4",
+        "seg2": "7",
+        "diff": false,
+        "className": "",
+        "x": 890,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "44353cdccb9d51b4",
+        "type": "inject",
+        "z": "54dcfb7b228095b5",
+        "name": "Trigger Traffic",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "49e9934b8491e538"
+            ]
+        ]
+    },
+    {
+        "id": "49e9934b8491e538",
+        "type": "http request",
+        "z": "54dcfb7b228095b5",
+        "name": "Get Traffic JSON",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://resource.data.one.gov.hk/td/carpark/vacancy_all.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 300,
+        "wires": [
+            [
+                "93b151dd8831443d"
+            ]
+        ]
+    },
+    {
+        "id": "1bed8ab943ab6b59",
+        "type": "function",
+        "z": "54dcfb7b228095b5",
+        "name": "Aggregate Vacancy",
+        "func": "// 1. 从 API 响应中获取停车场数据数组\nvar carParks = msg.payload.car_park;\n\n// 计数器\nvar totalVacancy = 0;\nvar reportingCount = 0;\n\n// 2. 遍历停车场数据\nif (carParks && Array.isArray(carParks)) {\n    for (var i = 0; i < carParks.length; i++) {\n        var cp = carParks[i];\n        \n        // 检查 vehicle_type 是否存在且为数组\n        if (cp.vehicle_type && Array.isArray(cp.vehicle_type)) {\n            \n            // 遍历该停车场支持的所有车辆类型\n            for (var j = 0; j < cp.vehicle_type.length; j++) {\n                var vt = cp.vehicle_type[j];\n                \n                // [关键修正]: 也就是 \"P\" 代表 Private Car (私家车)\n                if (vt.type === \"P\") {\n                    \n                    // 检查 service_category 是否存在\n                    if (vt.service_category && Array.isArray(vt.service_category)) {\n                        \n                        // 遍历服务类别 (通常包含 HOURLY / MONTHLY 等)\n                        // 我们把所有属于私家车的空位都加起来\n                        for (var k = 0; k < vt.service_category.length; k++) {\n                            var sc = vt.service_category[k];\n                            \n                            // 提取空位数\n                            var v = parseInt(sc.vacancy);\n                            \n                            // 数据清洗: 排除无效数据 (-1 代表满或无数据, NaN 代表解析失败)\n                            // 注意: JSON里有很多 -1, 必须排除\n                            if (!isNaN(v) && v >= 0) {\n                                totalVacancy += v;\n                                // 只有当你真的找到了有效数据时, 计数器才+1\n                                // 如果这里不加判断, 会导致 reportingCount 虚高\n                                reportingCount++; \n                            }\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n\n// 3. 构造最终输出对象\nmsg.payload = {\n    metric: \"city_wide_vacancy\",\n    total_vacancy: totalVacancy,\n    // 这里的 count 是指含有有效数据的\"空位记录数\"\n    count_carparks: reportingCount,\n    average_vacancy: reportingCount > 0 ? parseFloat((totalVacancy / reportingCount).toFixed(1)) : 0,\n    timestamp: new Date()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "78696f49095e0523",
+                "414d672b7f33fcfb"
+            ]
+        ]
+    },
+    {
+        "id": "78696f49095e0523",
+        "type": "mongodb3 in",
+        "z": "54dcfb7b228095b5",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "Insert Mobility",
+        "collection": "mobility_data",
+        "operation": "insert",
+        "x": 640,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "414d672b7f33fcfb",
+        "type": "function",
+        "z": "54dcfb7b228095b5",
+        "name": "Parking Gauge Value",
+        "func": "if (msg.payload && msg.payload.total_vacancy !== undefined) {\n    msg.payload = Number(msg.payload.total_vacancy);\n    msg.topic = \"Parking Availability\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 380,
+        "wires": [
+            [
+                "f0b8a6782ed1cdca"
+            ]
+        ]
+    },
+    {
+        "id": "f0b8a6782ed1cdca",
+        "type": "ui_gauge",
+        "z": "54dcfb7b228095b5",
+        "name": "Parking Gauge",
+        "group": "809640aa4dc59114",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Parking Availability",
+        "label": "Spaces",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10000",
+        "colors": [
+            "#e74c3c",
+            "#f1c40f",
+            "#2ecc71"
+        ],
+        "seg1": "3000",
+        "seg2": "7000",
+        "diff": false,
+        "className": "",
+        "x": 900,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2a924ebd4b6dc1a3",
+        "type": "catch",
+        "z": "54dcfb7b228095b5",
+        "name": "Handle API Errors",
+        "scope": [
+            "49e9934b8491e538"
+        ],
+        "uncaught": false,
+        "x": 410,
+        "y": 520,
+        "wires": [
+            [
+                "364541e88eafca90"
+            ]
+        ]
+    },
+    {
+        "id": "364541e88eafca90",
+        "type": "debug",
+        "z": "54dcfb7b228095b5",
+        "name": "API Errors Debug Level Dump",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error.message",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "93b151dd8831443d",
+        "type": "function",
+        "z": "54dcfb7b228095b5",
+        "name": "Clean & Parse JSON",
+        "func": "// 获取原始字符串\nvar rawString = msg.payload;\n\n// 1. 清洗 BOM 头 (如果存在)\nif (typeof rawString === \"string\") {\n    rawString = rawString.trim(); // 去除首尾空格\n    if (rawString.charCodeAt(0) === 0xFEFF) {\n        rawString = rawString.slice(1); // 切掉第一个不可见字符\n    }\n}\n\n// 2. 手动解析 JSON\ntry {\n    msg.payload = JSON.parse(rawString);\n} catch (e) {\n    node.error(\"Still failing to parse: \" + e.message);\n    return null; // 阻止错误向下传播\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 300,
+        "wires": [
+            [
+                "1bed8ab943ab6b59"
+            ]
+        ]
+    },
+    {
+        "id": "cbe55ed0e68f3ece",
+        "type": "inject",
+        "z": "d03b834723d9d70f",
+        "name": "Trigger Analysis",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "db68f8b8985151f3"
+            ]
+        ]
+    },
+    {
+        "id": "db68f8b8985151f3",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Set 24h Query",
+        "func": "// 1. Calculate the time window (past 24 hours).\n// 计算时间窗口 (过去 24 小时).\nvar end = new Date();\nvar start = new Date();\nstart.setHours(start.getHours() - 24); // 当前时间向前推 24 小时.\n\n// 2. Construct MongoDB query object.\n// 构造 MongoDB 查询对象.\n// 我们需要查找 timestamp 字段在 start 和 end 之间的记录.\n// $gt = greater than (大于), $lt = less than (小于).\nmsg.query = { \n    timestamp: { $gt: start, $lt: end } \n};\n\n// return msg object to trigger the next MongoDB nodes.\n// 返回 msg 对象以触发后续的 MongoDB 节点.\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 200,
+        "wires": [
+            [
+                "e00b6cddbd46bb68",
+                "f00cad67ca0333aa"
+            ]
+        ]
+    },
+    {
+        "id": "e00b6cddbd46bb68",
+        "type": "mongodb3 in",
+        "z": "d03b834723d9d70f",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "Get Temp Data",
+        "collection": "Weather Report",
+        "operation": "find.toArray",
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "c203f49adb564c72"
+            ]
+        ]
+    },
+    {
+        "id": "f00cad67ca0333aa",
+        "type": "mongodb3 in",
+        "z": "d03b834723d9d70f",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "Get AQHI Data",
+        "collection": "aqhi_data",
+        "operation": "find.toArray",
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "c203f49adb564c72"
+            ]
+        ]
+    },
+    {
+        "id": "c203f49adb564c72",
+        "type": "join",
+        "z": "d03b834723d9d70f",
+        "name": "Merge Results",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "10",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 640,
+        "y": 200,
+        "wires": [
+            [
+                "f2ea8032a9d9010e",
+                "117bad196f1c363a",
+                "310629193cb3f2c1",
+                "0a17460c28ebc892"
+            ]
+        ]
+    },
+    {
+        "id": "310629193cb3f2c1",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Build Temp vs AQHI Series",
+        "func": "var parts = msg.payload || [];\nvar weatherArr = [];\nvar aqhiArr = [];\n\nparts.forEach(function(part) {\n    var arr = Array.isArray(part) ? part : Object.values(part || {});\n    if (arr && arr[0]) {\n        if (arr[0].temperature) {\n            weatherArr = arr;\n        } else if (arr[0].aqhi !== undefined) {\n            aqhiArr = arr;\n        }\n    }\n});\n\nvar tempSeries = [];\nweatherArr.forEach(function(w) {\n    var ts = new Date(w.updateTime || w.timestamp).getTime();\n    var tempVal = 0;\n    if (w.temperature && Array.isArray(w.temperature.data)) {\n        var target = w.temperature.data.find(function(d) { return d.place === \"Hong Kong Observatory\"; });\n        if (!target && w.temperature.data.length > 0) {\n            target = w.temperature.data[0];\n        }\n        if (target) {\n            tempVal = parseFloat(target.value);\n        }\n    }\n    if (!isNaN(tempVal)) {\n        tempSeries.push({ x: ts, y: tempVal });\n    }\n});\n\nvar aqhiSeries = [];\naqhiArr.forEach(function(a) {\n    if (a.timestamp !== undefined && a.aqhi !== undefined) {\n        var v = parseFloat(a.aqhi);\n        if (!isNaN(v)) {\n            aqhiSeries.push({ x: new Date(a.timestamp).getTime(), y: v });\n        }\n    }\n});\n\ntempSeries.sort(function(a, b) { return a.x - b.x; });\naqhiSeries.sort(function(a, b) { return a.x - b.x; });\n\nmsg.payload = [{\n    series: [\"Temperature (°C)\", \"AQHI\"],\n    data: [tempSeries, aqhiSeries],\n    labels: [\"\"]\n}];\nmsg.topic = \"Temperature vs AQHI\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 220,
+        "wires": [
+            [
+                "0794eed64a73078e"
+            ]
+        ]
+    },
+    {
+        "id": "0794eed64a73078e",
+        "type": "ui_chart",
+        "z": "d03b834723d9d70f",
+        "name": "Temp vs AQHI Chart",
+        "group": "446931bd770fd7d2",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "label": "Temperature vs AQHI (°C / Index)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#e74c3c",
+            "#f39c12",
+            "#c0392b",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1200,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f2ea8032a9d9010e",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Calc Pearson Correlation",
+        "func": "// 输入: msg.payload 是一个包含两个数组的数组 (分别包含温度记录和空气质量记录).\nvar dataParts = msg.payload;\nvar weatherArr = [];\nvar aqhiArr = [];\n\n// [新增功能]: 提取最新数据用于 UI 显示 (Current Status).\n// 定义一个辅助函数来查找数组中时间戳最新的记录.\nfunction getLatestValue(arr, type) {\n    if (!arr || arr.length === 0) return \"\";\n    \n    // 按时间降序排序, 取第一个.\n    var sorted = arr.sort(function(a, b) {\n        var t1 = new Date(a.updateTime || a.timestamp).getTime();\n        var t2 = new Date(b.updateTime || b.timestamp).getTime();\n        return t2 - t1; \n    });\n    var latest = sorted[0];\n\n    if (type === 'temp') {\n        // 复用温度提取逻辑: 优先天文台, 否则取第一个.\n        if (latest.temperature && latest.temperature.data) {\n            var tTarget = latest.temperature.data.find(function(d){ return d.place === \"Hong Kong Observatory\" });\n            if (!tTarget) tTarget = latest.temperature.data[0];\n            return tTarget ? parseFloat(tTarget.value) : \"N/A\";\n        }\n    } else if (type === 'aqhi') {\n        return latest.aqhi;\n    }\n    return \"N/A\";\n}\n\n// 1. 识别哪个数组是哪种数据 (数据分类).\ndataParts.forEach(function(part) {\n    // [关键修正]: MongoDB 可能返回类数组对象, 使用 Object.values() 强制转为标准数组.\n    var arr = Array.isArray(part) ? part : Object.values(part);\n\n    // 检查每个数组的第一个元素来确定其类型.\n    if (arr && arr.length > 0) {\n        // 检查是否存在 'temperature' 对象 (HKO 数据结构) 或 'aqhi' 字段 (自定义结构).\n        if (arr[0].temperature) {\n            weatherArr = arr;\n        } else if (arr[0].aqhi !== undefined) {\n            aqhiArr = arr;\n        }\n    }\n});\n\n// [修复点]: 将获取最新值的逻辑移动到数据分类之后!\nvar curTemp = getLatestValue(weatherArr.slice(), 'temp'); // 使用 slice 防止影响原数组顺序.\nvar curAQHI = getLatestValue(aqhiArr.slice(), 'aqhi');\n\n// 如果数据不足 (任一数组为空), 提前返回.\n// [修正点]: 统一使用 correlation_coefficient 和 insight_text 键名.\nif (weatherArr.length === 0 || aqhiArr.length === 0) {\n    msg.payload = { \n        correlation_coefficient: 0, \n        insight_text: \"Insufficient Data (Collecting...)\" \n    };\n    return msg;\n}\n\n// 2. 数据对齐 (基于时间的连接).\n// 需要将 Temp(t) 与 AQHI(t) 配对, 使得时间差最小.\nvar pairs = [];\n\nweatherArr.forEach(function(wItem) {\n    // 提取 timestamp: HKO 数据可能使用 'updateTime' 字符串或 Date 对象.\n    // 将其转换为毫秒以便比较.\n    var wTime = new Date(wItem.updateTime || wItem.timestamp).getTime();\n    \n    // 在 30 分钟的时间窗口内寻找最接近的 AQHI 记录.\n    var closestMatch = null;\n    var minDiff = 30 * 60 * 1000; // 30 minutes in ms.\n\n    aqhiArr.forEach(function(aItem) {\n        var aTime = new Date(aItem.timestamp).getTime();\n        var diff = Math.abs(wTime - aTime);\n        if (diff < minDiff) {\n            minDiff = diff;\n            closestMatch = aItem;\n        }\n    });\n\n    // 如果找到匹配项, 提取数值并存储配对.\n    if (closestMatch) {\n        // 提取温度值.\n        // HKO 结构较深: temperature.data[x].value.\n        // [优化逻辑]: 优先寻找 \"Hong Kong Observatory\" 的数据, 否则取第一个.\n        var tempVal = 0;\n        if (wItem.temperature && wItem.temperature.data && Array.isArray(wItem.temperature.data)) {\n            // 尝试查找指定站点.\n            var targetData = wItem.temperature.data.find(function(d) {\n                return d.place === \"Hong Kong Observatory\";\n            });\n\n            // 如果找不到, 回退到数组第一个元素.\n            if (!targetData && wItem.temperature.data.length > 0) {\n                targetData = wItem.temperature.data[0];\n            }\n\n            // [安全修正]: 确保数值类型.\n            if (targetData) {\n                tempVal = parseFloat(targetData.value);\n            }\n        }\n        \n        // 确保 tempVal 是有效数字.\n        if (!isNaN(tempVal)) {\n            pairs.push({ x: tempVal, y: closestMatch.aqhi });\n        }\n    }\n});\n\n// 3. 计算皮尔逊相关系数 (r).\nvar n = pairs.length;\n\n// 需要至少 3 对数据才能计算有意义的相关性.\nif (n < 3) {\n    // [修正点]: 这里必须统一使用 Dashboard 识别的键名!\n    msg.payload = { \n        correlation_coefficient: 0, \n        insight_text: \"Waiting for more overlapping data (\" + n + \" pairs)...\" \n    };\n    return msg;\n}\n\nvar sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0;\npairs.forEach(function(p) {\n    sumX += p.x;\n    sumY += p.y;\n    sumXY += p.x * p.y;\n    sumX2 += p.x * p.x;\n    sumY2 += p.y * p.y;\n});\n\nvar numerator = (n * sumXY) - (sumX * sumY);\nvar denominator = Math.sqrt((n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY));\nvar r = (denominator === 0) ? 0 : (numerator / denominator);\n\n// 4. 生成结论.\n// 无显著相关性.\nvar insight = \"No significant correlation detected.\";\n// 结论: 高温与空气质量差相关 (热-化耦合).\nif (r > 0.5) insight = \"Insight: High Temp correlates with Poor Air Quality (Thermal-Chemical Coupling).\";\n// 结论: 检测到负相关.\nif (r < -0.5) insight = \"Insight: Negative Correlation detected.\";\n\n// 构造 Dashboard 输出对象.\nmsg.payload = {\n    correlation_coefficient: r.toFixed(2),\n    insight_text: insight,\n    data_points: n,\n    // [新增输出字段]\n    latest_temperature: curTemp,\n    latest_aqhi: curAQHI\n};\n\n// 如果需要图表显示, 设置 topic.\nmsg.topic = \"Pearson Correlation\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 320,
+        "wires": [
+            [
+                "8dfa4b0cb3231fbe",
+                "39b298e1542a0c5c",
+                "05e99de7ec43a354",
+                "e308facda1821dd1"
+            ]
+        ]
+    },
+    {
+        "id": "8dfa4b0cb3231fbe",
+        "type": "ui_text",
+        "z": "d03b834723d9d70f",
+        "group": "7e4719fe5df18646",
+        "order": 1,
+        "width": 12,
+        "height": 2,
+        "name": "",
+        "label": "Pearson Index",
+        "format": "{{msg.payload.insight_text}} (r={{msg.payload.correlation_coefficient}})",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "39b298e1542a0c5c",
+        "type": "switch",
+        "z": "d03b834723d9d70f",
+        "name": "Alert on Strong Coupling",
+        "property": "payload.correlation_coefficient",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0.6",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 420,
+        "wires": [
+            [
+                "199344ab94e5ea1a"
+            ]
+        ]
+    },
+    {
+        "id": "199344ab94e5ea1a",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Build Alert Toast",
+        "func": "var r = (msg.payload && msg.payload.correlation_coefficient !== undefined) ? msg.payload.correlation_coefficient : \"\";\nmsg.payload = \"⚠️ Alert: Strong Thermal-Chemical Coupling Detected! (r=\" + r + \")\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 420,
+        "wires": [
+            [
+                "0f1a78e9ea4d5c54"
+            ]
+        ]
+    },
+    {
+        "id": "0f1a78e9ea4d5c54",
+        "type": "ui_toast",
+        "z": "d03b834723d9d70f",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "#e74c3c",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "className": "",
+        "topic": "",
+        "name": "Pearson Alert",
+        "x": 1140,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "31315487c5a73e0b",
+        "type": "inject",
+        "z": "d03b834723d9d70f",
+        "name": "Trigger Mobility Chart",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 480,
+        "wires": [
+            [
+                "f3efa7b1b6e76805"
+            ]
+        ]
+    },
+    {
+        "id": "f3efa7b1b6e76805",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Set Mobility Query",
+        "func": "// 1. 计算时间窗口 (过去 24 小时).\nvar end = new Date();\nvar start = new Date();\nstart.setHours(start.getHours() - 24);\n\n// 2. 构造 MongoDB 查询语句.\n// 只需要 timestamp 和 total_vacancy 字段来绘图.\nmsg.query = { \n    timestamp: { $gt: start, $lt: end } \n};\n\n// 3. 设置排序规则.\n// 按时间升序排列, 确保图表线条从左到右正确绘制.\nmsg.sort = { timestamp: 1 };\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 480,
+        "wires": [
+            [
+                "1b43d51dddbdc8bd"
+            ]
+        ]
+    },
+    {
+        "id": "1b43d51dddbdc8bd",
+        "type": "mongodb3 in",
+        "z": "d03b834723d9d70f",
+        "service": "_ext_",
+        "configNode": "ecc26120.5c01a8",
+        "name": "Get Traffic History",
+        "collection": "mobility_data",
+        "operation": "find.toArray",
+        "x": 430,
+        "y": 580,
+        "wires": [
+            [
+                "22967e1e8a17d271",
+                "afc6af34ec2be783"
+            ]
+        ]
+    },
+    {
+        "id": "22967e1e8a17d271",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Format Traffic Data",
+        "func": "// 输入: msg.payload 是 MongoDB 返回的记录数组.\nvar inputData = msg.payload;\nvar records = [];\n\n// 0. 将输入标准化为数组.\nif (Array.isArray(inputData)) {\n    // 如果原本就是数组, 直接使用.\n    records = inputData;\n} else if (typeof inputData === 'object' && inputData !== null) {\n    // 关键修复: 如果是对象, 使用 Object.values() 提取所有记录值转为数组.\n    // {\"0\": a, \"1\": b} => [a, b].\n    records = Object.values(inputData);\n}\n\nvar chartData = [];\n\n// 1. 遍历并转换数据格式.\n// ui_chart 需要 {x: timestamp, y: value} 格式的数据点.\nrecords.forEach(function(r) {\n    // 确保 timestamp 和 total_vacancy 字段存在.\n    if (r.timestamp && r.total_vacancy !== undefined) {\n        chartData.push({\n            // X轴: 时间戳 (毫秒).\n            x: new Date(r.timestamp).getTime(),\n            // Y轴: 总空位数.\n            y: r.total_vacancy\n        });\n    }\n});\n\n// 2. 构造图表输出对象.\n// ui_chart 期望接收一个包含 series 数组的对象.\nmsg.payload = [{\n    // 系列名称.\n    series: [\"Total Vacancy\"],\n    // 数据点数组.\n    data: [chartData],\n    // 标签 (留空即可).\n    labels: [\"\"]\n}];\n\n// 设置图表标题/主题.\nmsg.topic = \"Traffic Vacancy Trend\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 640,
+        "wires": [
+            [
+                "48afc775014057ee"
+            ]
+        ]
+    },
+    {
+        "id": "48afc775014057ee",
+        "type": "ui_chart",
+        "z": "d03b834723d9d70f",
+        "name": "Traffic Chart",
+        "group": "10f3c747ac8315e4",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "label": "Traffic Vacancy Trend (Spaces)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#0d47a1",
+            "#1976d2",
+            "#26c6da",
+            "#64b5f6",
+            "#1abc9c",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 630,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "afc6af34ec2be783",
+        "type": "debug",
+        "z": "d03b834723d9d70f",
+        "name": "Debug: Get Traffic History",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "117bad196f1c363a",
+        "type": "debug",
+        "z": "d03b834723d9d70f",
+        "name": "Debug: Merge Results",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "0a17460c28ebc892",
+        "type": "function",
+        "z": "d03b834723d9d70f",
+        "name": "Build Temp vs Rain Series",
+        "func": "// 输入: msg.payload 是包含 Weather 和 AQHI 数据的数组.\n// 注意: 我们还需要 Traffic 数据. 但这里有个架构小挑战.\n// 为了简化, 我们假设这个图表主要展示 \"降雨量 (Rainfall)\" 和 \"温度 (Temperature)\" 的关系作为替代, \n// 或者更简单的: 我们复用 Weather Report 里的 Rainfall 数据, 把它做成单独的柱状图.\n\n// 但你的需求是 \"对比\". \n// 鉴于 Traffic 数据在另一条流里 (Get Traffic History), 在 Node-RED 里跨流合并比较麻烦.\n// \n// [最佳替代方案]: 我们做一张 \"Temperature vs Rainfall\" (温度 vs 降雨) 的图.\n// 这能展示 \"湿热效应\" (Wet-Bulb effect proxy), 且数据源都在 Weather Report 里, 实现难度为 0.\n\nvar parts = msg.payload || [];\nvar weatherArr = [];\n\n// 1. 提取天气数据.\nparts.forEach(function(part) {\n    var arr = Array.isArray(part) ? part : Object.values(part || {});\n    if (arr && arr[0] && arr[0].temperature) {\n        weatherArr = arr;\n    }\n});\n\nvar tempSeries = [];\nvar rainSeries = [];\n\n// 2. 遍历提取温度和降雨.\nweatherArr.forEach(function(w) {\n    var ts = new Date(w.updateTime || w.timestamp).getTime();\n    \n    // 提取温度.\n    var tempVal = 0;\n    if (w.temperature && Array.isArray(w.temperature.data)) {\n        var tTarget = w.temperature.data.find(d => d.place === \"Hong Kong Observatory\");\n        if (!tTarget) tTarget = w.temperature.data[0];\n        if (tTarget) tempVal = parseFloat(tTarget.value);\n    }\n    \n    // 提取降雨量.\n    // HKO 结构: rainfall.data[x].max (代表该区最大降雨量).\n    var rainVal = 0;\n    if (w.rainfall && Array.isArray(w.rainfall.data)) {\n        // 我们取 \"Yau Tsim Mong\" 或 \"Central & Western\" 的降雨量.\n        // 或者, \"Hong Kong Observatory\"\n        var rTarget = w.rainfall.data.find(d => d.place === \"Hong Kong Observatory\");\n        if (!rTarget) rTarget = w.rainfall.data[0]; // Fallback.\n        \n        // 注意: HKO 的 max 字段有时是字符串, 且可能为 0.\n        if (rTarget) rainVal = parseFloat(rTarget.max);\n    }\n\n    if (!isNaN(tempVal)) tempSeries.push({ x: ts, y: tempVal });\n    if (!isNaN(rainVal)) rainSeries.push({ x: ts, y: rainVal });\n});\n\n// 排序.\ntempSeries.sort((a, b) => a.x - b.x);\nrainSeries.sort((a, b) => a.x - b.x);\n\n// 3. 输出.\nmsg.payload = [{\n    series: [\"Temperature (°C)\", \"Rainfall (mm)\"],\n    data: [tempSeries, rainSeries],\n    labels: [\"\"]\n}];\n\nmsg.topic = \"Weather Conditions\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "05e99de7ec43a354",
+        "type": "ui_text",
+        "z": "d03b834723d9d70f",
+        "group": "7e4719fe5df18646",
+        "order": 2,
+        "width": 12,
+        "height": 2,
+        "name": "",
+        "label": "Latest Temperature",
+        "format": "{{msg.payload.latest_temperature}} °C",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 970,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e308facda1821dd1",
+        "type": "ui_text",
+        "z": "d03b834723d9d70f",
+        "group": "7e4719fe5df18646",
+        "order": 3,
+        "width": 12,
+        "height": 2,
+        "name": "",
+        "label": "Latest AQHI",
+        "format": "{{msg.payload.latest_aqhi}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 950,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "55caf617067ac148",
+        "type": "ui_template",
+        "z": "d03b834723d9d70f",
+        "group": "7e4719fe5df18646",
+        "name": "Methodology Info",
+        "order": 4,
+        "width": 12,
+        "height": 4,
+        "format": "<div\n    style=\"margin-top: 10px; padding: 15px; background-color: #333; border-radius: 5px; border-left: 5px solid #0094ce;\">\n    <!-- Title: 字体加大到 18px -->\n    <p style=\"margin:0; font-weight:bold; font-size: 18px; color: #fff;\">🧮 Methodology:</p>\n\n    <!-- List: 字体加大到 16px, 行高增加 -->\n    <ul style=\"margin: 10px 0 0 25px; color: #ddd; font-size: 16px; line-height: 1.6;\">\n        <li><b>Algorithm:</b> Pearson Correlation Coefficient (r).</li>\n        <li><b>Data Window:</b> Rolling 24-hours historical data.</li>\n        <li><b>Alignment:</b> 30-min sliding window matching logic.</li>\n    </ul>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1190,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "925d34e97c7dea32",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-mongodb3": "2.0.1",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
